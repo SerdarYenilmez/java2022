@@ -2,17 +2,24 @@ package kodlama.io.devs.business.abstracts;
 
 import java.util.List;
 
-import kodlama.io.devs.entities.Language;
+import org.springframework.stereotype.Service;
 
+import kodlama.io.devs.business.requests.language.CreateLanguageRequest;
+import kodlama.io.devs.business.requests.language.DeleteLanguageRequest;
+import kodlama.io.devs.business.requests.language.UpdateLanguageRequest;
+import kodlama.io.devs.business.responses.language.GetAllLanguageResponse;
+import kodlama.io.devs.business.responses.language.GetByIdLanguageResponse;
+
+@Service
 public interface LanguageService {
 
-	List<Language> getAll();
+	void add(CreateLanguageRequest createLanguageRequest) throws Exception;
 
-	public Language add (Language language) throws Exception;
+	void delete(DeleteLanguageRequest deleteLanguageRequest);
 
-	public void update (Language language, int id) throws Exception;
+	void update(UpdateLanguageRequest updateLanguageRequest);
 
-	public void delete (int id) throws Exception;
+	List<GetAllLanguageResponse> getAll();
 
-	public Language getById (int id) throws Exception;
+	GetByIdLanguageResponse getById(int id);
 }
